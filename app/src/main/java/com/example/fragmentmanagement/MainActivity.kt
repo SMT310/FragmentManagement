@@ -1,6 +1,7 @@
 package com.example.fragmentmanagement
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
@@ -10,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val firstFragment = FirstFragment()
         val secondFragment = SecondFragment()
+        Log.e("Life Cycle","My own on Create");
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.flFragment, firstFragment)
@@ -29,5 +31,15 @@ class MainActivity : AppCompatActivity() {
                 commit()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart();
+        Log.e("Life Cycle", "My own on Start");
+    }
+
+    override fun onResume() {
+        super.onResume();
+        Log.e("Life Cycle", "My own on Resume")
     }
 }
